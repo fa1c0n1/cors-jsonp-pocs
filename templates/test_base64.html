@@ -1,0 +1,32 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>codeHandler</title>
+    </head>    
+    <body>
+        <p>base64编码</p>
+        <input id='test' type='text'></input>
+        <button id="testButton">处理</button>
+        <p>base64解码</p>
+        <input id='test1' type='text'></input>
+        <button id="testButton1">处理</button>
+        <p id="showResult"></p>
+        <script>
+            var input1 = document.getElementById('test'),
+                button1 = document.getElementById('testButton'),
+                input2 = document.getElementById('test1'),
+                button2 = document.getElementById('testButton1'),
+                show = document.getElementById('showResult');
+            button1.onclick = function(){
+                ret =  window.btoa(window.encodeURIComponent(input1.value));//codeHandler.encode(input1.value,'base64');
+                console.log('ret=' + ret)
+            }
+
+            button2.onclick = function(){
+                ret = window.decodeURIComponent(window.atob(input2.value));//codeHandler.decode(input2.value,'base64');
+                console.log('ret=' + ret)
+            }
+        </script>
+    </body> 
+</html>

